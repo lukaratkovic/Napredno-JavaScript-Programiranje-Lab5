@@ -1,0 +1,18 @@
+<div id="userControl">
+  <!--Welcome [user] ([mail])-->
+  <!--Logout button-->
+  <a [routerLink]="'login'">Login</a>
+</div>
+
+<div id="posts">
+  <h1>Posts ({{posts.length}}):</h1>
+  <div *ngFor="let p of posts | withUsername:users; let i = index;">
+    by {{p.username}} at {{p.timestamp | date:"y-M-d H:mm:ss"}}
+    <p>{{p.comment}}</p>
+    <!-- TODO: Replace true in ngIf to check if user is logged in -->
+    <div *ngIf="true">
+      <button (click)="deleteComment(i)">Delete</button>
+      <button (click)="editComment(i)">Edit</button>
+    </div>
+  </div>
+</div>

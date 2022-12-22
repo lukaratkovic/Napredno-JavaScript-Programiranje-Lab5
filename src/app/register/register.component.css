@@ -1,0 +1,12 @@
+#registerForm{
+  width: 30%;
+  margin: auto;
+}
+
+#registerForm h1{
+  text-align: center;
+}
+
+#registerForm input[type="submit"]{
+  width: 100%;
+}
