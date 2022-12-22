@@ -11,6 +11,7 @@ import {WithUsernamePipe} from "./with-username.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CommentEditorComponent } from './comment-editor/comment-editor.component';
+import { ByUserPipe } from './by-user.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommentEditorComponent } from './comment-editor/comment-editor.componen
     RegisterComponent,
     ProfileComponent,
     WithUsernamePipe,
-    CommentEditorComponent
+    CommentEditorComponent,
+    ByUserPipe
   ],
     imports: [
         BrowserModule,

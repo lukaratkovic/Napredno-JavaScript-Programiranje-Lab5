@@ -3,7 +3,11 @@
   margin: auto;
 }
 
-#registerForm h1{
+#registerForm h1 {
+  text-align: center;
+}
+
+#backToLogin{
   text-align: center;
 }
 

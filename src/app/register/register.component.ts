@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DatabaseService} from "../database.service";
+import {DatabaseService} from "../shared/database.service";
 
 @Component({
   selector: 'app-register',
@@ -30,6 +30,6 @@ export class RegisterComponent {
     }
     delete this.registerForm.value.repeatPassword;
     this.databaseService.addUser(this.registerForm.value)
-       .subscribe(()=>this.router.navigateByUrl('/login'));
+       .subscribe(()=>this.router.navigate(['/login']));
   }
 }

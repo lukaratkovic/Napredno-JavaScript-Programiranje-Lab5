@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DatabaseService} from "../database.service";
+import {DatabaseService} from "../shared/database.service";
+import {AuthService} from "../shared/auth.service";
 
 @Component({
   selector: 'app-comment-editor',
@@ -14,7 +15,7 @@ export class CommentEditorComponent {
 
   commentForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, private databaseService : DatabaseService) {
+  constructor(private fb: FormBuilder, private databaseService : DatabaseService, private auth : AuthService) {
 
   }
 
@@ -28,7 +29,7 @@ export class CommentEditorComponent {
     if(this.mode == 'new'){
       let comment = {
         //TODO: Replace hardcoded userId with current userId
-        userId: '-NJum9u3i1-KyALG8y-9',
+        userId: this.auth.getUser().userId,
         timestamp: new Date(),
         comment: this.commentForm.value.comment
       };

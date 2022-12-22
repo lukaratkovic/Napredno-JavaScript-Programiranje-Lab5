@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import {DatabaseService} from "../database.service";
+import {DatabaseService} from "../shared/database.service";
 import {Post} from "../post.model";
+import {AuthService} from "../shared/auth.service";
+import {Router} from "@angular/router";
+import {User} from "../user.model";
 
 @Component({
   selector: 'app-forum',
@@ -15,20 +18,21 @@ export class ForumComponent {
   currentComment = new Post();
   mode = '';
 
-  constructor(private databaseService : DatabaseService){}
+  user !: User;
+
+  isAuthenticated !: boolean;
+
+  constructor(private databaseService : DatabaseService, private auth : AuthService, private router: Router){}
 
   ngOnInit(){
+    this.user = this.auth.getUser();
+    if(!this.auth.isAuthenticated()) this.router.navigate(['/login']);
     //Get users
     this.databaseService.getUsers()
       .subscribe(res=> this.users = res);
     //Get posts
-    // this.databaseService.getPosts()
-    //   .subscribe(res=>this.posts=res);
     this.databaseService.getPosts()
-      .subscribe(res=> {
-        this.posts = res;
-        console.log(res);
-      });
+      .subscribe(res=>this.posts=res);
   }
 
   finishEditing() {
@@ -54,6 +58,11 @@ export class ForumComponent {
   newComment() {
     this.commentEditorActive = true;
     this.mode = 'new';
+  }
+
+  logout() {
+    console.log(this.user);
+    this.auth.logout();
   }
 }
 
