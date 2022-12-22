@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {WithUsernamePipe} from "./with-username.pipe";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { CommentEditorComponent } from './comment-editor/comment-editor.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    WithUsernamePipe
+    WithUsernamePipe,
+    CommentEditorComponent
   ],
     imports: [
         BrowserModule,

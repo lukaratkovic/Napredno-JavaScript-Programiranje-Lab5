@@ -11,8 +11,13 @@
     <p>{{p.comment}}</p>
     <!-- TODO: Replace true in ngIf to check if user is logged in -->
     <div *ngIf="true">
-      <button (click)="deleteComment(i)">Delete</button>
-      <button (click)="editComment(i)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+      <button class="btn btn-success" (click)="edit(i)">Edit</button>
     </div>
   </div>
 </div>
+
+<button class="btn btn-success" *ngIf="!commentEditorActive" (click)="newComment()">New Comment</button>
+<button class="btn btn-danger" *ngIf="commentEditorActive" (click)="commentEditorActive = false;">Cancel</button>
+
+<app-comment-editor *ngIf="commentEditorActive" [comment]="currentComment" [mode]="mode" (onPost)="finishEditing()"></app-comment-editor>
